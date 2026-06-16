@@ -1,9 +1,25 @@
+// Mark JS as active — reveal CSS only applies when this class is present
+document.documentElement.classList.add('js-ready');
+
 // ── Scroll reveal ──
 const observer = new IntersectionObserver(
-  (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  (entries) => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  }),
+  { threshold: 0.08, rootMargin: '0px 0px -20px 0px' }
 );
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Force-show any reveal elements already in the viewport on load
+// (handles #hash navigation where elements are in view before observer fires)
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    }
+  });
+});
 
 // ── Header shrink on scroll ──
 const header = document.getElementById('site-header');
