@@ -543,6 +543,26 @@ body {
   box-shadow: 0 0 6px currentColor;
 }
 
+.screenshot-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+.screenshot-strip::-webkit-scrollbar { display: none; }
+.screenshot-strip img {
+  height: 200px;
+  width: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+  object-fit: cover;
+  transition: transform .2s;
+}
+.screenshot-strip img:hover { transform: scale(1.03); }
+
 /* ══════════════════════════════════════════
    TRIVIA SECTION
    ══════════════════════════════════════════ */
@@ -602,6 +622,22 @@ body {
   transform: translateY(-6px);
   background: var(--surface-mid);
   box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(124,58,237,0.12);
+}
+
+.tc-screenshot {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  aspect-ratio: 9/16;
+  background: var(--glass);
+}
+.tc-screenshot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
 
 .tc-icon-wrap { flex-shrink: 0; }
