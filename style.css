@@ -418,6 +418,19 @@ body {
   border-radius: 99px;
 }
 
+.steam-flag {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--cyan);
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.3);
+  padding: 6px 14px;
+  border-radius: 99px;
+  margin-bottom: 16px;
+}
+
 .featured-title {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 800;
@@ -425,6 +438,13 @@ body {
   line-height: 1.1;
   margin-bottom: 20px;
 }
+
+.featured-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-ghost.btn-large { padding: 16px 36px; font-size: 1.05rem; }
 
 .featured-desc {
   color: var(--muted);
