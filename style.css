@@ -583,6 +583,45 @@ body {
 }
 .screenshot-strip img:hover { transform: scale(1.03); }
 
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(8,6,20,0.92);
+  backdrop-filter: blur(8px);
+  cursor: zoom-out;
+}
+.lightbox.open { display: flex; animation: lb-fade .2s ease; }
+@keyframes lb-fade { from { opacity: 0; } to { opacity: 1; } }
+.lightbox-img {
+  max-width: min(420px, 90vw);
+  max-height: 90vh;
+  border-radius: 20px;
+  border: 1px solid var(--border-bright);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.7);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s;
+}
+.lightbox-close:hover { background: var(--surface-mid); }
+
 /* ══════════════════════════════════════════
    TRIVIA SECTION
    ══════════════════════════════════════════ */
@@ -650,7 +689,7 @@ body {
   overflow: hidden;
   margin-bottom: 14px;
   aspect-ratio: 9/16;
-  background: var(--glass);
+  background: var(--surface);
 }
 .tc-screenshot img {
   width: 100%;

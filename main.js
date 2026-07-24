@@ -40,6 +40,30 @@ document.querySelectorAll('.vsw-btn').forEach(btn => {
   });
 });
 
+// ── Lightbox for screenshots ──
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox?.querySelector('.lightbox-img');
+const openLightbox = (src, alt) => {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt || '';
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
+const closeLightbox = () => {
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
+document.querySelectorAll('.screenshot-strip img').forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => openLightbox(img.src, img.alt));
+});
+lightbox?.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && lightbox?.classList.contains('open')) closeLightbox();
+});
+
 // ── Mobile menu toggle ──
 const toggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.header-nav');
